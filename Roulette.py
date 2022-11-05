@@ -33,4 +33,4 @@ class RouletteMod(loader.Module):
     async def glucmd(self, m):
         ".glu <int> - максимальное количество участников"
         args = utils.get_args_raw(m)
-        
+        await m.edit("debug: <code>{args}</code>")
