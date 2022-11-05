@@ -28,8 +28,23 @@ from .. import loader, utils
 class RouletteMod(loader.Module):
     strings = {"name": "GLUsers"}
 
+    async def client_ready(self, client, db):
+        self._db = db
+        self._client = client
+
     @loader.owner
     async def glucmd(self, m):
         "<int> - максимальное количество участников"
-        args = utils.get_args_raw(m)
+        args = utils.get_args(m)
+        reply = await m.get_reply_message()
+        if reply:
+          messages = m.client.iter_messages(
+             self.chat_id, 
+             offset_id = reply.id, 
+             reverse=True, 
+             limit = 400
+          )
+          async for msg in messages:
+            print (msg)
+        
         await m.edit(f"debug: <code>{args}</code>")
