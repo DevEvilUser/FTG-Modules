@@ -26,8 +26,7 @@ from .. import loader, utils
 
 @loader.tds
 class RouletteMod(loader.Module):
-    strings = {"name": "Генератор списка участников"}
-    prefix = "<b>[GLU]</b>\n"
+    strings = {"name": "GLUsers"}
 
     @loader.owner
     async def glucmd(self, m):
