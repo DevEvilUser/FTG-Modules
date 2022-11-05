@@ -119,7 +119,7 @@ class QiwiMod(loader.Module):
     async def qsetcmd(self, m: types.Message):
         """.qset <phone> <TOKEN>
         Установить номер и токен"""
-        if args := utils.get_args(m):
+        if args := utils.get_args_raw(m):
             self.__set_enc("phone", args[0])
             self.__set_enc("token", args[1])
             return await utils.answer(
